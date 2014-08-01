@@ -1,0 +1,67 @@
+<% layout( 'layout' ) -%>
+<h1 style="margin-bottom:0;" align=center ><%= title %></h1>
+<div id="container" style="width:1550px">
+ <div>
+	  <form align=left method="post" action="/feature/create">
+	  <input type="hidden"  name="releasenumber" id="releasenumber" value=<%=ReleaseNumber %> />
+    	<input  type="submit", value="Add Feature" />
+		
+	  </form
+</div>
+
+<h1 style="margin-bottom:0;" align=left ></h1>
+
+   <style>
+		table,th,td
+		{
+		border:1px solid black;
+		border-collapse:collapse;
+		}
+		th,td
+		{
+		padding:5px;
+		}
+		</style>
+	<table style="width:600px">
+	<tr>
+	<!-- Colgroup -->
+	   <colgroup>
+	      <col class="vzebra-odd"> 
+	      <col class="vzebra-even">
+	    
+	   </colgroup>
+
+	  <th bgcolor=BurlyWood ><b>List of features </b></th>
+	  <th bgcolor=Cornsilk >Owner </th>
+	  <th bgcolor=DarkGray >startDate </th>
+	
+	</tr>
+	<% FeatureList.forEach( function ( feature ){ %>
+		<tr>
+		<% if( feature.releasenumber == ReleaseNumber ){ %>
+	 
+		<td width="70%"><%=feature.featurename%>
+	    <div align=right> 
+	   <form align=right method="post" action="/feature/info">
+		<input type="hidden"  name="featurenumber" id="featurenumber" value=<%= feature.featurenumber %> />
+	  	<input type="submit", value="view" />
+		 </form>
+		 
+		 <form align=left  method="post" action="/feature/delete">
+	  <input type="hidden"  name="featurenumber" id="featurenumber" value=<%=feature.featureNumber %> />
+	  <input type="submit", value="delete" title="Delete Feature and Attachements" />
+			</form>
+			</div>
+	   	   </td> 
+	   <td width="15%"><%=feature.owner%></td>
+	   <td width="15%"><%=moment(feature.Startdate).format('MM/DD/YYYY')%></td>
+	   <% } %>
+	</tr>
+	<% }); %>
+	
+	</table>
+</div>  
+
+
+</div>
+
