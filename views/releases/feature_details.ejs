@@ -1,0 +1,102 @@
+<% layout( 'layout' ) -%>
+<h1 style="margin-bottom:0;" align=center ><%= title %></h1>
+<div id="container" style="width:1550px">
+ <div>
+	  <form align=left method="post" action="/feature/create">
+	  <input type="hidden"  name="featurenumber" id="featurenumber" value=<%=featureNumber %> />
+	  
+			<input type="submit", value="Update" />
+
+	  </form>
+		<form>
+
+<input TYPE="button" VALUE="Go to Home"
+     onclick="window.location.href='/users'"> 
+
+  </form>
+		
+	  
+</div>	
+		<% if( FeatureList.featurenumber == featureNumber ){ %>
+	 	
+<div id="header" height:50px;width:60px style="background-color:#FFA500;">	
+	<b>Feature Name:</b>	<%=FeatureList.featurename%>
+	<br><b>Realease Number:</b>  <%=FeatureList.releasenumber%>
+	<br><b>Realease Type:</b><%=FeatureList.ReleaseType%>
+	<br><b>Owner:</b><%=FeatureList.owner%>
+	<br><b>Status:</b><%=FeatureList.Status%>
+	
+</div>
+<br><br>
+<div id="Description" height:200px;width:100px  overflow=auto>	
+	<b>Feature Description:</b> <br>	<%=FeatureList.description%> </br>
+	<hr size="5" color= "#c0c0c0">
+	<br><b>Modules Effected:</b>  <%=FeatureList.moduleEffected%>
+	<hr size="5" color= "#c0c0c0">
+	<br><b>Arch Description:</b> <br> <%=FeatureList.architecturedespcription%>  </br>
+	<hr size="5" color= "#c0c0c0">
+	<br><b>Design Description:</b> <br> <%=FeatureList.designdescription%>  </br>
+</div>
+
+<br><br>
+<div id="Attachment" height:200px;width:100px ">	
+	<b align= right> List of Attachments</b>
+	 
+		<form align=left method="post" action="/feature/upload" enctype="multipart/form-data">
+	  <input type="hidden"  name="featurenumber" id="featurenumber" value=<%=featureNumber %> />
+	  <p>File: <input type="file" name="test" /></p>
+	  <p><b>Description :</b><input type="text" size="60" name="description" /></p>
+			<input type="submit", value="upload" />
+		</form
+	
+	
+	</div>
+	  <div>
+   <style>
+		table,th,td
+		{
+		border:1px solid black;
+		border-collapse:collapse;
+		}
+		th,td
+		{
+		padding:5px;
+		}
+		</style>
+	
+	<table style="width:600px">
+	<tr>
+	 
+	  <th bgcolor=BurlyWood><b>List of Attachments</b></th> 
+	  <th bgcolor=BlanchedAlmon>Description </th>
+	  <th bgcolor=BlanchedAlmon>Delete </th>
+	</tr> 
+	<% Listattachments.forEach( function ( attachment ){ %>
+			<tr>
+		<% if( attachment.featurenumber == FeatureList.featurenumber ){ %>
+	   
+	   <td width="60%"> <%=attachment.filename%> <a href="<%=attachment.filename%>"> download</a>
+		
+	   </td> 
+	   <td width="30%"><%=attachment.description%></td>
+	   <td width="10%">
+	   <form align=left method="post" action="/feature/attachdelete">
+	 
+	  <input type="hidden"  name="attachmentid" id="attachmentid" value=<%=attachment.attachmentnumber %> />
+	  <input type="hidden"  name="filename" id="filename" value=<%=attachment.filename %> />
+	  <input type="hidden"  name="featurenumber" id="featurenumber" value=<%=FeatureList.featurenumber %> />
+			<input type="submit", value="delete" title="Delete Attachement"/>
+		</td>
+	  </form>
+	   
+	   <% } %>
+	</tr>
+	<% }); %>
+	
+	</table>
+	
+</div>
+
+<% } %>  
+</div>
+
