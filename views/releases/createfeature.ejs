@@ -1,0 +1,71 @@
+<% layout( 'layout' ) -%>
+<h1 style="margin-bottom:0;" align=center ><%= title %></h1>
+<div id="header" style="background-color:LightSteelBlue ;">
+	<form action="/feature" align=Left  method="post" accept-charset="utf-8" align=center>
+	 <fieldset>
+	  <p>
+	   <b>Feature Name:</b><input type="text" size="150" placeholder="Mandatory feature name..." name="featurename" required />
+	  Enter Feature Name (60 chars) 
+	  </p>
+	  <p> <b>Description :</b></p>
+	  <textarea rows="8" cols="100" name="description" placeholder="Enter description here..."></textarea>
+	  Use/Buisness case Description (1500 chars)
+	  </p>
+	  
+	  <p>
+	   <b>Module Effected:</b><input type="text" size="150" name="moduleEffected" placeholder="Names of Modules effected..."/>
+	  Enter module Effected (60 chars)
+	  </p>
+	  
+	  
+	  <p>
+	   <b>Architecture Despcription :</b>
+	  </p>
+	  <p>
+	  <textarea rows="4" cols="100" name="architecturedespcription" placeholder="Enter description here..."></textarea>
+		Enter architecture despcription (500 chars)
+	  </p>
+	  
+	  <p>
+	   <b>Design description :</b>
+	  </p>
+	  <p>
+	  <textarea align=left rows="4" cols="100" name="designdescription" placeholder="Enter description here..."></textarea>
+	   Enter design description (500 chars)
+	  </p>
+	  <p>
+	   <b>Owner :</b><input type="text" size="10" name="owner" />
+	  Enter owner(10 chars)
+	  </p>
+	  
+	  <p>
+	   <b>Status :</b><input type="text" size="10" name="Status" />
+	  Status (submitted,Started)...(10 chars)
+	  </p>
+	  <p>
+	  <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+	  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	  <link rel="stylesheet" href="/resources/demos/style.css">
+	  <script>
+	  $(function() {
+		$( "#datepicker1" ).datepicker();
+		$( "#datepicker2" ).datepicker();
+	  });
+	  </script>
+	  
+	   <b>Start Date:</b><input type="text"  id="datepicker1"  name="startDate" />
+	  
+	  <b> End Date:</b><input type="text"  id="datepicker2" name="endDate" />
+	   <input type="hidden"  name="releasenumber" id="releasenumber" value=<%= Releasenumber%> />
+	  </p>
+	  <p>
+	  <select name="ReleaseType">
+	<option value="Customisation">Customisation</option>
+	<option value="Customisation">Enhancement</option>
+	<option value="Core">Core</option>
+	</select>
+	  </p>
+	 <input type="submit", value="Submit" />
+</div>
+
