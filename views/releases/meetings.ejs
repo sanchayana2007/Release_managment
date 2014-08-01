@@ -1,0 +1,49 @@
+ <div>
+   <style>
+		table,th,td
+		{
+		border:1px solid black;
+		border-collapse:collapse;
+		}
+		th,td
+		{
+		padding:5px;
+		}
+		</style>
+	
+<form align=left method="post" action="/meeting/create">
+	
+	  	<input type="submit", value="Add a Discussion" />
+		 </form>  
+	<table style="width:600px">
+	<tr>
+	 
+	  <th bgcolor=BurlyWood>Meeting details </th> 
+	  <th bgcolor=Bisque>Date </th>
+	  <th bgcolor=Bisque>Presenter</th>
+	   <th bgcolor=Bisque>Type</th>
+	</tr> 
+	<% ListMeetings.forEach( function ( meeting ){ %>
+			<tr>
+		   <td width="70%"> <%=meeting.meetingAgenda%> 
+		   <div align=right>
+	   <form align=right method="post" action="/meeting/info">
+		<input type="hidden"  name="meetingnumber" id="meetingnumber" value=<%= meeting.meetingnumber %> />
+	  	<input type="submit", value="view" />
+		 </form>
+	   <form align=right method="post" action="/Meeting/delete">
+	  <input type="hidden"  name="meetingnumber" id="meetingnumber" value=<%=meeting.meetingnumber %> />
+	  
+			<input  type="submit", value="delete" title="Delete meeting and Attachements" />
+		
+	  </form
+	  <div>
+	   </td> 
+	   <td width="15%"><%=moment(meeting.date).format('MM/DD/YYYY')%></td>
+	   <td width="15%"><%=meeting.Presenter%></td>
+	   <td width="15%"><%=meeting.MeetingType%></td>
+	
+	</tr>
+	<% }); %>
+	
+	</table>
