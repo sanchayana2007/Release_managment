@@ -1,0 +1,80 @@
+{
+"frank": {
+"username": "frank",
+"name": "Frank Sinatra",
+"bio": "Singer",
+"password": "the"
+},
+"san": {
+"username": "san",
+"name": "Antonio Carlos Jobim",
+"bio": "Composer",
+"password": "san"
+},
+"fred": {
+"username": "fred",
+"name": "Fred Astaire",
+"bio": "Dancer and Actor",
+"password": "top"
+},
+"sukumar": {
+"username": "sukumar",
+"name": "Frank Sinatra",
+"bio": "Singer",
+"password": "sukumar"
+},
+"anil": {
+"username": "anil",
+"name": "Antonio Carlos Jobim",
+"bio": "Composer",
+"password": "anil"
+},
+"siva": {
+"username": "siva",
+"name": "Fred Astaire",
+"bio": "Dancer and Actor",
+"password": "siva"
+},
+"rina": {
+"username": "rina",
+"name": "Frank Sinatra",
+"bio": "Singer",
+"password": "rina"
+},
+"priyanka": {
+"username": "priyanka",
+"name": "Antonio Carlos Jobim",
+"bio": "Composer",
+"password": "priyanka"
+},
+"prakash": {
+"username": "prakash",
+"name": "Fred Astaire",
+"bio": "Dancer and Actor",
+"password": "prakash"
+},
+"pramod": {
+"username": "pramod",
+"name": "Fred Astaire",
+"bio": "Dancer and Actor",
+"password": "pramod"
+},
+"shashank": {
+"username": "shashank",
+"name": "Fred Astaire",
+"bio": "Dancer and Actor",
+"password": "shashank"
+},
+"Lakshman": {
+"username": "Lakshman",
+"name": "Fred Astaire",
+"bio": "Dancer and Actor",
+"password": "Lakshman"
+},
+"sachin": {
+"username": "sachin",
+"name": "Fred Astaire",
+"bio": "Dancer and Actor",
+"password": "sachin"
+}
+}
