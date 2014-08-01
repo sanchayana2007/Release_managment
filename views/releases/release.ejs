@@ -1,0 +1,54 @@
+<% layout( 'layout' ) -%>
+<h1 style="margin-bottom:0;" align=center ><%= title %></h1>
+<div id="header" style="background-color:LightSteelBlue ;">
+	<form action="/release" align=Left  method="post" accept-charset="utf-8" align=center>
+
+	  <p>
+	   <b>Release Name:</b><input type="text" size="150" name="releasename" required />
+	  Enter Release Name (60 chars)
+	  </p>
+	  
+	  <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+	  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	  <link rel="stylesheet" href="/resources/demos/style.css">
+	  <script>
+	  $(function() {
+		$( "#datepicker1" ).datepicker();
+		$( "#datepicker2" ).datepicker();
+	  });
+	  </script>
+	  
+	  
+	   <b>Start Date:</b><input type="text"  id="datepicker1"  name="startDate" />
+	  
+	 
+	  <b> End Date:</b><input type="text"  id="datepicker2" name="endDate" />
+	  
+	  </p>
+	  <p>
+	  <select name="type">
+	<option value="Customisation">Customisation</option>
+	<option value="Core">Core</option>
+	</select>
+	  </p>
+	   <input type="hidden"  name="productnumber" id="productnumber" value=<%= Productnumber%> />
+	  <input type="submit", value="Submit" />
+	
+	</form>
+
+</div>
+<div id="content" align=center style="background-color:#EEEEEE;height:900px;width:1200px;float:left;">
+  <b><font size="6">List of the releases</b></font>
+    <div>
+  <% Listrelease.forEach( function ( release ){ %>
+  <p>
+    <span>
+      <li> <b><%= release.releasename %></b>  <font size="4"> <%= release.releasenumber %></li>
+	  
+	 </span>
+    
+  </p>
+<% }); %>
+    </div>
+  </div>
