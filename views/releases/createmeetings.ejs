@@ -1,0 +1,69 @@
+<% layout( 'layout' ) -%>
+<h1 style="margin-bottom:0;" align=center ><%= title %></h1>
+<div id="header" style="background-color:LightSteelBlue ;">
+	<form action="/meeting" align=Left  method="post" accept-charset="utf-8" align=center>
+	 <fieldset>
+	  <p>
+	   <b>Agenda:</b><input type="text" size="150" name="agenda" placeholder="mandatory field..." required />
+	  Enter meeting Agenda (60 chars)
+	  </p>
+	  <p> <b>Discussion :</b></p>
+	  <p>
+	  <textarea rows="5" cols="100" name="discussion" placeholder="Enter Discussion done here..."></textarea>
+	  Discussion (1500 chars)
+	  </p>
+	  
+	  <p>
+	   <b>Attendees:</b>
+	   </p>
+	   <p>
+	   <input type="text" size="150" name="attendes"/>
+	  Enter Attendes (60 chars)
+	  </p>
+	  
+	  <p>
+	   <b>MOM:</b><input type="number" size="10" name="mom" />
+	  Enter Minutes of Meeting (60 chars)
+	  </p>
+	  
+	  <p>
+	   <b>Conclusion Description :</b>
+	  </p>
+	  <p>
+	  <textarea rows="4" cols="100" name="conclusion" placeholder="Enter Discussion done here..."></textarea>
+	  Enter Conclusion Description (500 chars)
+	  </p>
+	  
+	  
+	  <p>
+	   <b>Presenter :</b><input type="text" size="10" name="Presenter" />
+	  Enter Presenter(10 chars)
+	  </p>
+	  
+	  
+	  <p>
+	  <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+	  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	  <link rel="stylesheet" href="/resources/demos/style.css">
+	  <script>
+	  $(function() {
+		$( "#datepicker" ).datepicker();
+	  });
+	  </script>
+	  
+	   <b>Date:</b><input type="text"  id="datepicker"  name="date" />
+	  
+	  
+	  </p>
+	  <p>
+	   <b>MeetingType :</b>
+	  <select name="MeetingType">
+	<option value="Presentation">Presentation</option>
+	<option value="Discussion">Discussion</option>
+	
+	</select>
+	  </p>
+	 <input type="submit", value="Submit" />
+</div>
+
