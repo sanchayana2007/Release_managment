@@ -1,0 +1,119 @@
+<% layout( 'layout' ) -%>
+
+<div id="container"  overflow: auto;>
+ <div id="header" style="background-color:LightSteelBlue ;">
+  <h1 style="margin-bottom:0;" align=center ><%= title %></h1>
+  <img src="s.png" align=center alt "some_text" width="42" height="42" align = top <%= function(element) { element.style.display = 'none'; } %>/>
+
+  <%if(session.user) {%>
+	<p align=left>
+	   <span>
+			<font size="3"> <b> Hello <%=session.user%> whats Up </b>  </font>
+			
+		</span>
+	</p>
+	
+   <form align=left action="/session" method="post">
+		<input type="hidden", name="logout", value="1" />
+	  	<input type="submit", value="Logout" />
+		
+		 </form>
+ 
+ </div>
+<div>
+
+
+
+  <form align=left method="post" action="/meetings/meetinglist">
+	
+	  	<input type="submit", value="Discussion and Session" />
+		Click for Details of the Meetings and discussion and session
+		 </form>
+   
+ </div>
+
+
+ <div id="content" align=center style="background-color:#EEEEEE; overflow=auto float:left;">
+  <b><font size="6">List of the Products</b></font>
+  <form>
+ <li>
+<input TYPE="button" VALUE="Add a Product"
+     onclick="window.location.href='Products/create'"> 
+  </li>
+  </form>
+    
+  <% ListProduct.forEach( function ( product ){ %>
+  <p>
+    <span>
+	  <hr size="5" color= "#c0c0c0">
+      <font size="6"><u><%= product.productname %></u></font>
+	  <div  align=left>
+	  <b>Description:</b>
+	  <li><%= product.description %></li>
+	  </div>
+	  <div>
+	  <form align=left method="post" action="/release/create" title="Add release for this product">
+	  <input type="hidden"  name="productnumber" id="productnumber" value=<%= product.productnumber %> />
+	  
+			<input type="submit", value="Add Release" />
+		</li>
+	  </form>
+	  
+	  <div>
+   <style>
+		table,th,td
+		{
+		border:1px solid black;
+		border-collapse:collapse;
+		}
+		th,td
+		{
+		padding:5px;
+		}
+		</style>
+		
+	<table style="width:600px" border-bottom-style:solid; border-color: #c0c0c0>
+	<tr>
+	 
+	  <th bgcolor=BurlyWood>List of Releases </th> 
+	  <th bgcolor=Azure>Start </th>
+	  <th bgcolor=Bisque >Type Release</th>
+	</tr> 
+	<% ListReleases.forEach( function ( release ){ %>
+			<tr>
+		<% if( product.productnumber == release.productnumber ){ %>
+	   
+	   <td width="70%"> <%=release.releasename%> 
+	   <div align=right>
+	   <form align=right method="post" action="/release/info" >
+		<input type="hidden"  name="releasenumber" id="releasenumber" value=<%= release.releasenumber %> />
+	  	<input type="submit", value="view" />
+		 </form>
+	   <form align=right method="post" action="/release/delete">
+	  <input type="hidden"  name="releasenumber" id="releasenumber" value=<%=release.releasenumber %> />
+	  
+			<input  type="submit", value="delete" bgcolor:LightPink  title="Delete release,  Feature and Attachements" />
+	   </form
+	   </div>
+	   </td> 
+	   <td width="15%"><%=moment(release.Startdate).format('MM/DD/YYYY')%></td>
+	   
+	   <td width="15%"><%=release.ReleaseType%></td>
+	   <% } %>
+	</tr>
+	<% }); %>
+	
+	</table>
+</div>  
+
+	  </div>
+	 
+    
+  </p>
+<% }); %>
+    </div>
+  </div>
+   
+ </div>
+  <%}%>
+</div>
