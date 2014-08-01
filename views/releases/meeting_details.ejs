@@ -1,0 +1,90 @@
+
+<h1 style="margin-bottom:0;" align=center ><%= title %></h1>
+<div id="container" style="width:1550px">
+ 
+<form>
+
+<input TYPE="button" VALUE="Go to Home"
+     onclick="window.location.href='/users'"> 
+
+  </form>
+  
+<div id="header" height:50px;width:60px style="background-color:#FFA500;">	
+	<b>Agenda:</b>	<%=MeetingList.meetingAgenda%>
+	<br><b>Type:</b><%=MeetingList.MeetingType%>
+	<br><b>Presenter:</b><%=MeetingList.Presenter%>
+	
+	</div>
+<br><br>
+<div id="discussion" height:200px;width:100px  overflow=auto>	
+	<b>Discussion:</b>	<br> <%=MeetingList.discussion%> </br>
+	<hr size="5" color= "#c0c0c0">
+	<br><b>Attendes:</b>  <%=MeetingList.attendes%>
+	<hr size="5" color= "#c0c0c0">
+	<br><b>Conclusion:</b> <br> <%=MeetingList.conclusion%></br>
+	<hr size="5" color= "#c0c0c0">
+</div>
+
+<br><br>
+<div id="Attchment" height:200px;width:100px ">	
+	<b align= right> List of Attachments</b>
+	 
+		<form align=left method="post" action="/meeting/upload" enctype="multipart/form-data">
+	  <input type="hidden"  name="meetingnumber" id="meetingnumber" value=<%=MeetingList.meetingnumber %> />
+	  <p>File: <input type="file" name="test" /></p>
+	  <p><b>Description :</b><input type="text" size="60" name="description" /></p>
+			<input type="submit", value="upload" />
+		</form
+	
+	
+	</div>
+	  <div><b>List of Attachments</b>
+   <style>
+		table,th,td
+		{
+		border:1px solid black;
+		border-collapse:collapse;
+		}
+		th,td
+		{
+		padding:5px;
+		}
+		</style>
+	
+	<table style="width:600px">
+	<tr>
+	 
+	  <th bgcolor=BurlyWood>FileName </th> 
+	  <th bgcolor=BlanchedAlmon>description </th>
+	  <th bgcolor=BlanchedAlmon>delete </th>
+	</tr> 
+	<% Listattachments.forEach( function ( attachment ){ %>
+			<tr>
+		<% if( attachment.meetingnumber == MeetingList.meetingnumber ){ %>
+	   
+	   <td width="60%"> <%=attachment.filename%> <a href="<%=attachment.filename%>"> download</a>
+		
+	   </td> 
+	   <td width="30%"><%=attachment.description%></td>
+	   <td width="10%">
+	   <form align=left method="post" action="/meeting/attachdelete">
+	 
+	  <input type="hidden"  name="attachmentid" id="attachmentid" value=<%=attachment.attachmentnumber %> />
+	  <input type="hidden"  name="filename" id="filename" value=<%=attachment.filename %> />
+			<input type="submit", value="delete" title="Delete Attachement"/>
+			  </form>
+		</td>
+	
+	   
+	   <% } %>
+	</tr>
+	<% }); %>
+	
+	</table>
+	
+</div>
+
+
+ 
+</div>
+
